@@ -9,21 +9,22 @@ import torch
 import torch.nn.functional as F
 import torch.optim as optim
 
-BUFFER_SIZE = 1000000  # replay buffer size
-BATCH_SIZE = 128       # minibatch size
+BUFFER_SIZE = 1000000   # replay buffer size
+BATCH_SIZE = 128        # batch size
 GAMMA = 0.99            # discount factor
-TAU = 0.0025           # for soft update of target parameters
-LR_ACTOR = 0.0002         # learning rate of the actor 
+TAU = 0.0025            # for soft update of target parameters
+LR_ACTOR = 0.0002       # learning rate of the actor
 LR_CRITIC = 0.0005      # learning rate of the critic
 WEIGHT_DECAY = 0        # L2 weight decay
 
-LEARN_EVERY = 20        # learning timestep interval
-LEARN_NUM   = 10 
-GRAD_CLIPPING = 1.0
+LEARN_EVERY = 20        # learning time step interval
+LEARN_NUM = 10          # num of learn per learn every
 
-EPSILON       = 1.0     # for epsilon in the noise process (act step)
-EPSILON_DECAY = 1e-6
-EPSILON_MIN = 0.1
+GRAD_CLIPPING = 1.0     # clamp gradient for critic local netowork
+
+EPSILON = 1.0           # for epsilon in the noise process (act step)
+EPSILON_DECAY = 1e-6    # epsilon decay per learn
+EPSILON_MIN = 0.1       # epsilon min
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
